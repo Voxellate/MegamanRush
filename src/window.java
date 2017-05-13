@@ -4,18 +4,24 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 class window {
-    /*public window() {
-        initComponents();
-        new playerHurt();
-    }*/
 
-    private void hurtActionPerformed(ActionEvent e) {
-        playerHurt playerHurtIns = new playerHurt();
-        playerHurtIns.start();
+    private static String[] updateStates;
+    private static JLabel updateLabel;
+
+    private void hurtActionPerformed(ActionEvent e) {   //Called when the hurt button is pressed; adds player hurt animation to queue.
+        updateStates = new String[]{"player", "hurt"};
+        updateLabel = playerLabel;
+        spriteUpdate spriteThread = new spriteUpdate();
+        spriteThread.start();
     }
 
-    static JLabel giveLabel()   {
-        return playerLabel;
+    static JLabel giveLabel()   {   //Variable pass-through
+        return updateLabel;
+
+    }
+
+    static String[] giveStates()   {    //Variable pass-through
+        return updateStates;
     }
 
     void initComponents() {
@@ -37,13 +43,13 @@ class window {
             {
 
                 //---- playerLabel ----
-                playerLabel.setIcon(new ImageIcon(getClass().getResource("/img/MM_Idle.png")));
+                playerLabel.setIcon(new ImageIcon(getClass().getResource("/img/player_idle.png")));
                 playerLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 layerPane.add(playerLabel, JLayeredPane.DEFAULT_LAYER);
                 playerLabel.setBounds(260, 355, 112, 112);
 
                 //---- enemyLabel ----
-                enemyLabel.setIcon(new ImageIcon(getClass().getResource("/img/Enemy.png")));
+                enemyLabel.setIcon(new ImageIcon(getClass().getResource("/img/enemy_idle.png")));
                 enemyLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 layerPane.add(enemyLabel, JLayeredPane.DEFAULT_LAYER);
                 enemyLabel.setBounds(790, 370, 112, 100);
@@ -85,7 +91,7 @@ class window {
     // Generated using JFormDesigner Evaluation license - Lucas Dugdale
     private JFrame frame;
     private JLayeredPane layerPane;
-    private static JLabel playerLabel;
+    private JLabel playerLabel;
     private JLabel enemyLabel;
     private JButton hurt;
     private JLabel background;
