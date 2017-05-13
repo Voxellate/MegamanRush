@@ -4,27 +4,45 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {comp layeredPane1::::1276:x, space :::p}}"
-			"$verticalGroup": "par l {seq l {comp layeredPane1:::p:720:p, space :0:0:x}}"
+			"$horizontalGroup": "par l {comp layerPane::l::1258:x}"
+			"$verticalGroup": "par l {seq l {comp layerPane:::p:664:p, space :0:0:x}}"
 		} ) {
 			name: "frame"
 			"$sizePolicy": 1
 			"resizable": false
 			add( new FormContainer( "javax.swing.JLayeredPane", new FormLayoutManager( class javax.swing.JLayeredPane ) ) {
-				name: "layeredPane1"
+				name: "layerPane"
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
+					name: "player"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/MM_Idle.png" )
+				}, new FormLayoutConstraints( null ) {
+					"x": 275
+					"width": 76
+					"height": 96
+					"y": 360
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "enemy"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/Enemy.png" )
+				}, new FormLayoutConstraints( null ) {
+					"x": 815
+					"y": 380
+					"width": 68
+					"height": 76
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "background"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/background.png" )
 				}, new FormLayoutConstraints( null ) {
 					"x": 0
 					"y": 0
-					"width": 1275
+					"width": 1260
 					"height": 665
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1022, 562 )
+			"size": new java.awt.Dimension( 1260, 690 )
 		} )
 	}
 }

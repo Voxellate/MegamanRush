@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
 /*
  * Created by JFormDesigner on Fri May 12 08:54:00 AEST 2017
  */
@@ -20,38 +21,48 @@ public class window {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Lucas Dugdale
         frame = new JFrame();
-        layeredPane1 = new JLayeredPane();
-        label2 = new JLabel();
+        layerPane = new JLayeredPane();
+        player = new JLabel();
+        enemy = new JLabel();
+        background = new JLabel();
 
         //======== frame ========
         {
             frame.setResizable(false);
             Container frameContentPane = frame.getContentPane();
 
-            //======== layeredPane1 ========
+            //======== layerPane ========
             {
 
-                //---- label2 ----
-                label2.setIcon(new ImageIcon(getClass().getResource("/img/background.png")));
-                layeredPane1.add(label2, JLayeredPane.DEFAULT_LAYER);
-                label2.setBounds(0, 0, 1275, 665);
+                //---- player ----
+                player.setIcon(new ImageIcon(getClass().getResource("/img/MM_Idle.png")));
+                layerPane.add(player, JLayeredPane.DEFAULT_LAYER);
+                player.setBounds(275, 360, 76, 96);
+
+                //---- enemy ----
+                enemy.setIcon(new ImageIcon(getClass().getResource("/img/Enemy.png")));
+                layerPane.add(enemy, JLayeredPane.DEFAULT_LAYER);
+                enemy.setBounds(815, 380, 68, 76);
+
+                //---- background ----
+                background.setIcon(new ImageIcon(getClass().getResource("/img/background.png")));
+                layerPane.add(background, JLayeredPane.DEFAULT_LAYER);
+                background.setBounds(0, 0, 1260, 665);
             }
 
             GroupLayout frameContentPaneLayout = new GroupLayout(frameContentPane);
             frameContentPane.setLayout(frameContentPaneLayout);
             frameContentPaneLayout.setHorizontalGroup(
                 frameContentPaneLayout.createParallelGroup()
-                    .addGroup(frameContentPaneLayout.createSequentialGroup()
-                        .addComponent(layeredPane1, GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(layerPane, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
             );
             frameContentPaneLayout.setVerticalGroup(
                 frameContentPaneLayout.createParallelGroup()
                     .addGroup(frameContentPaneLayout.createSequentialGroup()
-                        .addComponent(layeredPane1, GroupLayout.PREFERRED_SIZE, 720, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(layerPane, GroupLayout.PREFERRED_SIZE, 664, GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
             );
-            frame.setSize(1022, 562);
+            frame.setSize(1260, 690);
             frame.setLocationRelativeTo(frame.getOwner());
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -60,7 +71,9 @@ public class window {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Lucas Dugdale
     private JFrame frame;
-    private JLayeredPane layeredPane1;
-    private JLabel label2;
+    private JLayeredPane layerPane;
+    private JLabel player;
+    private JLabel enemy;
+    private JLabel background;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
