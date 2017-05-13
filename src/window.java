@@ -1,29 +1,31 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/*
- * Created by JFormDesigner on Fri May 12 08:54:00 AEST 2017
- */
-
-
-
-/**
- * @author Lucas Dugdale
- */
-public class window {
-    public window() {
+class window {
+    /*public window() {
         initComponents();
-        frame.setVisible(true);
-    } 
+        new playerHurt();
+    }*/
 
-    private void initComponents() {
+    private void hurtActionPerformed(ActionEvent e) {
+        playerHurt playerHurtIns = new playerHurt();
+        playerHurtIns.start();
+    }
+
+    static JLabel giveLabel()   {
+        return playerLabel;
+    }
+
+    void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Lucas Dugdale
         frame = new JFrame();
         layerPane = new JLayeredPane();
-        player = new JLabel();
-        enemy = new JLabel();
+        playerLabel = new JLabel();
+        enemyLabel = new JLabel();
+        hurt = new JButton();
         background = new JLabel();
 
         //======== frame ========
@@ -34,15 +36,23 @@ public class window {
             //======== layerPane ========
             {
 
-                //---- player ----
-                player.setIcon(new ImageIcon(getClass().getResource("/img/MM_Idle.png")));
-                layerPane.add(player, JLayeredPane.DEFAULT_LAYER);
-                player.setBounds(275, 360, 76, 96);
+                //---- playerLabel ----
+                playerLabel.setIcon(new ImageIcon(getClass().getResource("/img/MM_Idle.png")));
+                playerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                layerPane.add(playerLabel, JLayeredPane.DEFAULT_LAYER);
+                playerLabel.setBounds(260, 355, 112, 112);
 
-                //---- enemy ----
-                enemy.setIcon(new ImageIcon(getClass().getResource("/img/Enemy.png")));
-                layerPane.add(enemy, JLayeredPane.DEFAULT_LAYER);
-                enemy.setBounds(815, 380, 68, 76);
+                //---- enemyLabel ----
+                enemyLabel.setIcon(new ImageIcon(getClass().getResource("/img/Enemy.png")));
+                enemyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                layerPane.add(enemyLabel, JLayeredPane.DEFAULT_LAYER);
+                enemyLabel.setBounds(790, 370, 112, 100);
+
+                //---- hurt ----
+                hurt.setText("hurt");
+                hurt.addActionListener(this::hurtActionPerformed);
+                layerPane.add(hurt, JLayeredPane.DEFAULT_LAYER);
+                hurt.setBounds(new Rectangle(new Point(605, 560), hurt.getPreferredSize()));
 
                 //---- background ----
                 background.setIcon(new ImageIcon(getClass().getResource("/img/background.png")));
@@ -66,14 +76,18 @@ public class window {
             frame.setLocationRelativeTo(frame.getOwner());
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        frame.setVisible(true);
     }
+
+
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Lucas Dugdale
     private JFrame frame;
     private JLayeredPane layerPane;
-    private JLabel player;
-    private JLabel enemy;
+    private static JLabel playerLabel;
+    private JLabel enemyLabel;
+    private JButton hurt;
     private JLabel background;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

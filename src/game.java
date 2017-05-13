@@ -1,6 +1,8 @@
 import javax.swing.*;
-public class game {
+class game {
     public static void main(String[] args) {
-        new window();
+        window gameWindow = new window();
+        System.out.println("Started");
+        gameWindow.initComponents();
     }
 }

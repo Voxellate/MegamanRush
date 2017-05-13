@@ -13,22 +13,32 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JLayeredPane", new FormLayoutManager( class javax.swing.JLayeredPane ) ) {
 				name: "layerPane"
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "player"
+					name: "playerLabel"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/MM_Idle.png" )
+					"horizontalAlignment": 0
 				}, new FormLayoutConstraints( null ) {
-					"x": 275
-					"width": 76
-					"height": 96
-					"y": 360
+					"x": 260
+					"width": 112
+					"height": 112
+					"y": 355
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "enemy"
+					name: "enemyLabel"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/Enemy.png" )
+					"horizontalAlignment": 0
 				}, new FormLayoutConstraints( null ) {
-					"x": 815
-					"y": 380
-					"width": 68
-					"height": 76
+					"x": 790
+					"y": 370
+					"width": 112
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "hurt"
+					"text": "hurt"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "hurtActionPerformed", true ) )
+				}, new FormLayoutConstraints( null ) {
+					"x": 605
+					"y": 560
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "background"
