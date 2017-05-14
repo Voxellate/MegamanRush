@@ -1,15 +1,20 @@
+import java.awt.event.*;
 import javax.swing.*;
 
-class spriteUpdate extends Thread{
+class spriteUpdate {
 
-    @Override
-    public void run() {
-        String[] update = window.giveStates();
-        JLabel spriteLabel = window.giveLabel();
-        String image1 = "/img/" + update[0] + "_" + update[1] + ".png";
-        String image2 = "/img/" + update[0] + "_idle.png";
-        spriteLabel.setIcon(new ImageIcon(spriteUpdate.class.getResource(image1)));
-        try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
-        spriteLabel.setIcon(new ImageIcon(spriteUpdate.class.getResource(image2)));
+    static void animate(JLabel label, String sprite, String state, int delay) {
+        String image1 = "/img/" + sprite + "_" + state + ".png";
+        String image2 = "/img/" + sprite + "_idle.png";
+        label.setIcon(new ImageIcon(spriteUpdate.class.getResource(image1)));
+        ActionListener task = evt -> label.setIcon(new ImageIcon(spriteUpdate.class.getResource(image2)));
+        Timer timer = new Timer(delay, task);
+        timer.setRepeats(false);
+        timer.start();
+    }
+
+    static void change(JLabel label, String sprite, String state){
+        String image1 = "/img/" + sprite + "_" + state + ".png";
+        label.setIcon(new ImageIcon(spriteUpdate.class.getResource(image1)));
     }
 }
