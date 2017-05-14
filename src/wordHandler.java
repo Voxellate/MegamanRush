@@ -3,26 +3,26 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.stream.Stream;
 
-class words {
+class wordHandler {
 
     String[] wordList;
     String selectedWord;
     String censoredWord;
+    StringBuilder builder = new StringBuilder();
+    JLabel wordLabel;
 
     String wordSelect(){
         try (Stream<String> stream = Files.lines(Paths.get("out/production/MegamanRush/wordList.txt"))) {
             //stream.forEach(System.out::println);
             wordList = stream.toArray(String[]::new);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {e.printStackTrace();}
         selectedWord = wordList[(int) (Math.random() * wordList.length)];
-        System.out.println(selectedWord);
+        //System.out.println(selectedWord);
         return selectedWord;
     }
 
     void wordCensor(JLabel label) {
-        StringBuilder builder = new StringBuilder();
+        wordLabel = label;
         for (int i = 0; i < selectedWord.length(); i++) {
             String s = selectedWord.substring(i, i + 1);
             if (s.equals(" ") || s.equals(",")) {
@@ -32,19 +32,19 @@ class words {
             }
         }
         censoredWord = builder.toString();
-        label.setText(censoredWord);
+        wordLabel.setText(censoredWord);
     }
 
-    /*void wordCompare(String a){
-        StringBuilder builder = new StringBuilder();
+    void wordCompare(String a){
         for (int i = 0; i < selectedWord.length(); i++) {
             String s = selectedWord.substring(i, i + 1);
             if (s.equals(a)) {
-                builder.append(censoredWord.charAt(i));
-            } else {
-
+                builder.replace(i, i+1, s);
             }
-        }*/
+        }
+        censoredWord = builder.toString();
+        wordLabel.setText(censoredWord);
+    }
 }
 
 

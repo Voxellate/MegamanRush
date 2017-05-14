@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-class game {
+class gameController {
 
     private JLabel playerLabel;
     private JLabel enemyLabel;
@@ -14,24 +14,26 @@ class game {
     String censoredWord;
 
     private void playerLabelMouseClicked() {
-        spriteUpdate.animate(playerLabel, "player", "attack", 400);
-        spriteUpdate.animate(enemyLabel, "enemy", "hurt", 400);
+        frameUpdater.animate(playerLabel, "player", "attack", 400);
+        frameUpdater.animate(enemyLabel, "enemy", "hurt", 400);
     }
 
     private void enemyLabelMouseClicked() {
-        spriteUpdate.animate(enemyLabel, "enemy", "attack", 600);
-        spriteUpdate.animate(playerLabel, "player", "hurt", 600);
+        frameUpdater.animate(enemyLabel, "enemy", "attack", 600);
+        frameUpdater.animate(playerLabel, "player", "hurt", 600);
         health = health - 1;
-        spriteUpdate.change(healthLabel, "health", Integer.toString(health));
+        frameUpdater.change(healthLabel, "health", Integer.toString(health));
         if (health == 0) {gameOver();}
     }
 
     private void charsMouseClicked(int x){
         chars[x].setText("");
-        System.out.println((char) (x + 65));
+        char letter =((char)(x + 65));
+        System.out.println(letter);
+
     }
 
-    private void getLabels(frame gameWindow) {
+    private void getLabels(frameCreator gameWindow) {
         JLabel[][] labels = gameWindow.labels();
 
         playerLabel = labels[0][0];
@@ -67,13 +69,13 @@ class game {
         }
     }
 
-    game() {
-        words words = new words();
-        correctWord = words.wordSelect();
-        frame gameWindow = new frame();
+    gameController() {
+        wordHandler wordHandler = new wordHandler();
+        correctWord = wordHandler.wordSelect();
+        frameCreator gameWindow = new frameCreator();
         gameWindow.initComponents();
         getLabels(gameWindow);
-        words.wordCensor(guessLabel);
+        wordHandler.wordCensor(guessLabel);
     }
 
     private void gameOver(){

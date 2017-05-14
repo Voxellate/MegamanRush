@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-class frame {
+class frameCreator {
 
         JLabel[][] labels() {
             return new JLabel[][]{{playerLabel, enemyLabel, healthLabel, guessLabel},chars};
@@ -9,15 +9,6 @@ class frame {
 
         void initComponents() {
             // Generated using JFormDesigner Evaluation license - Lucas Dugdale
-            JFrame frame = new JFrame();
-            JLayeredPane layerPane = new JLayeredPane();
-            JPanel charPanel = new JPanel();
-            healthLabel = new JLabel();
-            playerLabel = new JLabel();
-            enemyLabel = new JLabel();
-            JLabel background = new JLabel();
-            guessLabel = new JLabel();
-
             //======== frame ========
             {
                 frame.setResizable(false);
@@ -86,11 +77,16 @@ class frame {
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
 
-    private JLabel[] chars = new JLabel[26];
-    private JLabel healthLabel;
-    private JLabel playerLabel;
-    private JLabel enemyLabel;
-    private JLabel guessLabel;
+    private JFrame frame = new JFrame();
+        private JLayeredPane layerPane = new JLayeredPane();
+            private JPanel charPanel = new JPanel();
+                private JLabel[] chars = new JLabel[26];
+            private JLabel background = new JLabel();
+            private JLabel healthLabel = new JLabel();
+            private JLabel playerLabel = new JLabel();
+            private JLabel enemyLabel = new JLabel();
+            private JLabel guessLabel = new JLabel();
+
 }
 
 
