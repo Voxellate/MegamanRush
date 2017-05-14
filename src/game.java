@@ -7,35 +7,38 @@ class game {
     private JLabel playerLabel;
     private JLabel enemyLabel;
     private JLabel healthLabel;
+    private JLabel guessLabel;
     private int health = 10;
     private JLabel[] chars;
+    String correctWord;
+    String censoredWord;
 
-    private void playerLabelMouseClicked(MouseEvent e) {
-        spriteUpdate.animate(playerLabel, "player", "attack", 500);
-        spriteUpdate.animate(enemyLabel, "enemy", "hurt", 500);
+    private void playerLabelMouseClicked() {
+        spriteUpdate.animate(playerLabel, "player", "attack", 400);
+        spriteUpdate.animate(enemyLabel, "enemy", "hurt", 400);
     }
 
-    private void enemyLabelMouseClicked(MouseEvent e) {
-        spriteUpdate.animate(enemyLabel, "enemy", "attack", 500);
-        spriteUpdate.animate(playerLabel, "player", "hurt", 500);
+    private void enemyLabelMouseClicked() {
+        spriteUpdate.animate(enemyLabel, "enemy", "attack", 600);
+        spriteUpdate.animate(playerLabel, "player", "hurt", 600);
         health = health - 1;
         spriteUpdate.change(healthLabel, "health", Integer.toString(health));
         if (health == 0) {gameOver();}
     }
 
-    private void charsMouseClicked(MouseEvent e, int x){
+    private void charsMouseClicked(int x){
         chars[x].setText("");
         System.out.println((char) (x + 65));
     }
 
-    void getLabels(frame gameWindow) {
+    private void getLabels(frame gameWindow) {
         JLabel[][] labels = gameWindow.labels();
 
         playerLabel = labels[0][0];
         playerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                playerLabelMouseClicked(e);
+                playerLabelMouseClicked();
             }
         });
 
@@ -43,11 +46,14 @@ class game {
         enemyLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                enemyLabelMouseClicked(e);
+                enemyLabelMouseClicked();
             }
         });
         
         healthLabel = labels[0][2];
+
+        guessLabel = labels[0][3];
+        guessLabel.setText("test");
 
         chars = labels[1];
         for (int x = 0; x < chars.length; x++) {
@@ -55,19 +61,22 @@ class game {
             chars[x].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    charsMouseClicked(e, finalX);
+                    charsMouseClicked(finalX);
                 }
             });
         }
-}
+    }
 
     game() {
+        words words = new words();
+        correctWord = words.wordSelect();
         frame gameWindow = new frame();
         gameWindow.initComponents();
         getLabels(gameWindow);
+        words.wordCensor(guessLabel);
     }
 
-    void gameOver(){
+    private void gameOver(){
         System.exit(0);
     }
 }

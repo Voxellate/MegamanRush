@@ -218,6 +218,16 @@ new FormModel {
 					"width": 1260
 					"height": 550
 				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "wordLabel"
+					"font": new java.awt.Font( "MegaMan 2", 0, 20 )
+					"horizontalAlignment": 0
+				}, new FormLayoutConstraints( null ) {
+					"x": 570
+					"y": 585
+					"width": 675
+					"height": 31
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

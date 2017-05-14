@@ -1,33 +1,29 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class frame {
+class frame {
 
         JLabel[][] labels() {
-            JLabel[][] j = {{playerLabel, enemyLabel, healthLabel},chars};
-            return j;
+            return new JLabel[][]{{playerLabel, enemyLabel, healthLabel, guessLabel},chars};
         }
 
         void initComponents() {
-            // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
             // Generated using JFormDesigner Evaluation license - Lucas Dugdale
-            frame = new JFrame();
-            layerPane = new JLayeredPane();
-            charPanel = new JPanel();
+            JFrame frame = new JFrame();
+            JLayeredPane layerPane = new JLayeredPane();
+            JPanel charPanel = new JPanel();
             healthLabel = new JLabel();
             playerLabel = new JLabel();
             enemyLabel = new JLabel();
-            background = new JLabel();
-
+            JLabel background = new JLabel();
+            guessLabel = new JLabel();
 
             //======== frame ========
             {
                 frame.setResizable(false);
                 Container frameContentPane = frame.getContentPane();
-
                 //======== layerPane ========
                 {
-
                     //======== charPanel ========
                     {
                         charPanel.setLayout(new GridLayout(3, 0, 10, 10));
@@ -64,6 +60,13 @@ public class frame {
                     background.setIcon(new ImageIcon(getClass().getResource("/img/background.png")));
                     layerPane.add(background, JLayeredPane.DEFAULT_LAYER);
                     background.setBounds(0, 0, 1260, 550);
+
+                    //---- guessLabel ----
+                    guessLabel.setFont(new Font("MegaMan 2", Font.PLAIN, 20));
+                    guessLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    layerPane.add(guessLabel, JLayeredPane.DEFAULT_LAYER);
+                    guessLabel.setBounds(570, 585, 675, 31);
+                    guessLabel.setText("test");
                 }
 
                 GroupLayout frameContentPaneLayout = new GroupLayout(frameContentPane);
@@ -79,24 +82,15 @@ public class frame {
                 frame.setSize(1260, 690);
                 frame.setLocationRelativeTo(frame.getOwner());
             }
-            // JFormDesigner - End of component initialization  //GEN-END:initComponents
             frame.setVisible(true);
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
 
-
-
-        // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-        // Generated using JFormDesigner Evaluation license - Lucas Dugdale
-        private JFrame frame;
-        private JLayeredPane layerPane;
-        private JPanel charPanel;
-        private JLabel[] chars = new JLabel[26];
-        private JLabel healthLabel;
-        private JLabel playerLabel;
-        private JLabel enemyLabel;
-        private JLabel background;
-        // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private JLabel[] chars = new JLabel[26];
+    private JLabel healthLabel;
+    private JLabel playerLabel;
+    private JLabel enemyLabel;
+    private JLabel guessLabel;
 }
 
 
