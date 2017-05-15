@@ -1,50 +1,60 @@
 import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Stream;
 
 class wordHandler {
 
     String[] wordList;
-    String selectedWord;
-    String censoredWord;
-    StringBuilder builder = new StringBuilder();
-    JLabel wordLabel;
+    static String selectedWord;
+    static StringBuilder censoredWord = new StringBuilder();
+    static JLabel wordLabel;
+    static boolean b;
 
-    String wordSelect(){
-        try (Stream<String> stream = Files.lines(Paths.get("out/production/MegamanRush/wordList.txt"))) {
-            //stream.forEach(System.out::println);
+    String wordSelect() {
+        selectedWord = null;
+        try (Stream<String> stream = Files.lines(Paths.get("out/production/MegamanRush/files/wordList.txt"))) {
             wordList = stream.toArray(String[]::new);
-        } catch (IOException e) {e.printStackTrace();}
-        selectedWord = wordList[(int) (Math.random() * wordList.length)];
-        //System.out.println(selectedWord);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        selectedWord = wordList[new Random().nextInt(wordList.length)];
+        System.out.println(selectedWord);
         return selectedWord;
     }
 
     void wordCensor(JLabel label) {
+        censoredWord = new StringBuilder();
         wordLabel = label;
         for (int i = 0; i < selectedWord.length(); i++) {
             String s = selectedWord.substring(i, i + 1);
             if (s.equals(" ") || s.equals(",")) {
-                builder.append(s);
+                censoredWord.append(s);
             } else {
-                builder.append("_");
+                censoredWord.append("_");
             }
         }
-        censoredWord = builder.toString();
-        wordLabel.setText(censoredWord);
+        wordLabel.setText(censoredWord.toString());
     }
 
-    void wordCompare(String a){
+    static boolean wordCompare(char a) {
+        b = false;
+        String l = String.valueOf(a);
         for (int i = 0; i < selectedWord.length(); i++) {
             String s = selectedWord.substring(i, i + 1);
-            if (s.equals(a)) {
-                builder.replace(i, i+1, s);
+            if (s.equals(l)) {
+                censoredWord.replace(i, i + 1, s);
+                b = true;
             }
         }
-        censoredWord = builder.toString();
-        wordLabel.setText(censoredWord);
+        wordLabel.setText(censoredWord.toString());
+        return b;
+    }
+
+    static boolean wordCheck(){
+        return Objects.equals(censoredWord.toString(), selectedWord);
     }
 }
-
 

@@ -10,11 +10,16 @@ class window {
         return j;
     }
 
+    private void aKeyPressed(KeyEvent e) {
+
+    }
+
     void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Lucas Dugdale
         frame = new JFrame();
         layerPane = new JLayeredPane();
+        gameOverLabel = new JLabel();
         charPanel = new JPanel();
         a = new JLabel();
         b = new JLabel();
@@ -56,6 +61,15 @@ class window {
             //======== layerPane ========
             {
 
+                //---- gameOverLabel ----
+                gameOverLabel.setText("GAME OVER");
+                gameOverLabel.setFocusTraversalPolicyProvider(true);
+                gameOverLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+                gameOverLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                gameOverLabel.setForeground(new Color(204, 204, 204));
+                layerPane.add(gameOverLabel, JLayeredPane.DEFAULT_LAYER);
+                gameOverLabel.setBounds(475, 170, 305, 45);
+
                 //======== charPanel ========
                 {
 
@@ -72,6 +86,13 @@ class window {
                     a.setText("A");
                     a.setFont(new Font("MegaMan 2", Font.PLAIN, 18));
                     a.setHorizontalTextPosition(SwingConstants.CENTER);
+                    a.setFocusable(false);
+                    a.addKeyListener(new KeyAdapter() {
+                        @Override
+                        public void keyPressed(KeyEvent e) {
+                            aKeyPressed(e);
+                        }
+                    });
                     charPanel.add(a);
 
                     //---- b ----
@@ -260,11 +281,11 @@ class window {
             frameContentPane.setLayout(frameContentPaneLayout);
             frameContentPaneLayout.setHorizontalGroup(
                 frameContentPaneLayout.createParallelGroup()
-                    .addComponent(layerPane, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
+                    .addComponent(layerPane, GroupLayout.DEFAULT_SIZE, 1573, Short.MAX_VALUE)
             );
             frameContentPaneLayout.setVerticalGroup(
                 frameContentPaneLayout.createParallelGroup()
-                    .addComponent(layerPane, GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                    .addComponent(layerPane, GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
             );
             frame.setSize(1260, 690);
             frame.setLocationRelativeTo(frame.getOwner());
@@ -280,6 +301,7 @@ class window {
     // Generated using JFormDesigner Evaluation license - Lucas Dugdale
     private JFrame frame;
     private JLayeredPane layerPane;
+    private JLabel gameOverLabel;
     private JPanel charPanel;
     private JLabel a;
     private JLabel b;
