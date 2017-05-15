@@ -19,9 +19,9 @@ class frameCreator {
 
         void initComponents() {
             try {
-                mmFont = Font.createFont(Font.TRUETYPE_FONT, new File("out/production/MegamanRush/fonts/megaman_2.ttf")).deriveFont(20f);
+                mmFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/megaman_2.ttf")).deriveFont(20f);
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("out/production/MegamanRush/fonts/megaman_2.ttf")));
+                ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/megaman_2.ttf")));
             } catch (IOException | FontFormatException e) {
                 e.printStackTrace();
             }

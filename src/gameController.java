@@ -26,7 +26,6 @@ class gameController {
 
     private void inputEvent(int x){
         if (ready) {
-            System.out.println("ayy" + x);
             chars[x].setVisible(false);
             char l =((char)(x + 65));
             if (wordHandler.wordCompare(l)) {

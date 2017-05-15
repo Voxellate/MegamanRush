@@ -15,7 +15,7 @@ class wordHandler {
 
     String wordSelect() {
         selectedWord = null;
-        try (Stream<String> stream = Files.lines(Paths.get("out/production/MegamanRush/files/wordList.txt"))) {
+        try (Stream<String> stream = Files.lines(Paths.get("src/files/wordList.txt"))) {
             wordList = stream.toArray(String[]::new);
         } catch (IOException e) {
             e.printStackTrace();
