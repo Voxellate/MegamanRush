@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 class frameCreator {
-
         JLabel[][] labels() {
             return new JLabel[][]{{playerLabel, enemyLabel, healthLabel, guessLabel, gameOverLabel},chars};
         }
@@ -25,6 +24,9 @@ class frameCreator {
             } catch (IOException | FontFormatException e) {
                 e.printStackTrace();
             }
+            guessLabel = new JLabel();
+            chars = new JLabel[26];
+            charPanel = new JPanel();
 
             //======== frame ========
             {
@@ -114,16 +116,16 @@ class frameCreator {
 
     private JFrame frame = new JFrame();
         private JLayeredPane layerPane = new JLayeredPane();
-            private JPanel charPanel = new JPanel();
-                private JLabel[] chars = new JLabel[26];
+            private JPanel charPanel;
+                private JLabel[] chars;
             private JLabel background = new JLabel();
             private JLabel healthLabel = new JLabel();
             private JLabel playerLabel = new JLabel();
             private JLabel enemyLabel = new JLabel();
-            private JLabel guessLabel = new JLabel();
+            private JLabel guessLabel;
             private JLabel gameOverLabel = new JLabel();
 
-
+        //Change declaration to be in-method so they are flushed each time?
 }
 
 

@@ -80,11 +80,11 @@ class gameController {
     gameController() {
         gameWindow = new frameCreator();
         gameWindow.initComponents();
+        getLabels(gameWindow);
         gameStart();
     }
 
     private void gameStart() {
-        getLabels(gameWindow);
         wordHandler = new wordHandler();
         wordHandler.wordSelect();
         wordHandler.wordCensor(guessLabel);
