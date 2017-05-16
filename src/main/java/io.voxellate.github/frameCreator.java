@@ -22,7 +22,7 @@ class frameCreator {
 
         void initComponents() {
             try {
-                mmFont = Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("fonts/megaman_2.ttf").getPath())).deriveFont(20f);
+                mmFont = Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("fonts/megaman_2.ttf").getPath())).deriveFont(22f);
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("fonts/megaman_2.ttf").getPath())));
             } catch (IOException | FontFormatException e) {
@@ -76,7 +76,7 @@ class frameCreator {
                     playerLabel.setIcon(new ImageIcon(getClass().getResource("img/player_idle.png")));
                     playerLabel.setHorizontalAlignment(SwingConstants.CENTER);
                     layerPane.add(playerLabel, JLayeredPane.DEFAULT_LAYER);
-                    playerLabel.setBounds(275, 300, 108, 112);
+                    playerLabel.setBounds(275, 300, 116, 112);
                     playerLabel.setFocusable(false);
 
                     //---- enemyLabel ----
@@ -97,7 +97,7 @@ class frameCreator {
                     guessLabel.setHorizontalAlignment(SwingConstants.CENTER);
                     layerPane.add(guessLabel, JLayeredPane.DEFAULT_LAYER);
                     guessLabel.setBounds(570, 585, 675, 31);
-                    guessLabel.setText("test");
+                    guessLabel.setText("Loading...");
                     guessLabel.setFocusable(true);
                 }
 

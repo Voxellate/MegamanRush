@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 class wordHandler {
 
     String[] wordList;
-    static String selectedWord;
+    public String selectedWord;
     static StringBuilder censoredWord = new StringBuilder();
     static JLabel wordLabel;
     static boolean b;
@@ -41,7 +41,7 @@ class wordHandler {
         wordLabel.setText(censoredWord.toString());
     }
 
-    static boolean wordCompare(char a) {
+    boolean wordCompare(char a) {
         b = false;
         String l = String.valueOf(a);
         for (int i = 0; i < selectedWord.length(); i++) {
@@ -55,7 +55,7 @@ class wordHandler {
         return b;
     }
 
-    static boolean wordCheck(){
+    boolean wordCheck(){
         return Objects.equals(censoredWord.toString(), selectedWord);
     }
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 class frameUpdater {
 
-    static void animate(JLabel label, String sprite, String state, int delay) {
+    void animate(JLabel label, String sprite, String state, int delay) {
         String image1 = "img/" + sprite + "_" + state + ".png";
         String image2 = "img/" + sprite + "_idle.png";
         label.setIcon(new ImageIcon(frameUpdater.class.getResource(image1)));
@@ -14,7 +14,7 @@ class frameUpdater {
         timer.start();
     }
 
-    static void change(JLabel label, String sprite, String state){
+    void change(JLabel label, String sprite, String state){
         String image1 = "img/" + sprite + "_" + state + ".png";
         label.setIcon(new ImageIcon(frameUpdater.class.getResource(image1)));
     }
