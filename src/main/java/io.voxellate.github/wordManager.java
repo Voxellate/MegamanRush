@@ -1,24 +1,15 @@
 package io.voxellate.github;
-import sun.misc.IOUtils;
 
 import javax.swing.*;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.*;
 import java.util.*;
-import java.util.stream.Stream;
 
-class wordHandler {
+class wordManager {
 
-    String[] wordList;
-    public String selectedWord;
-    static StringBuilder censoredWord = new StringBuilder();
-    static JLabel wordLabel;
-    static boolean b;
+    String selectedWord;
+    private static StringBuilder censoredWord = new StringBuilder();
+    private static JLabel wordLabel;
 
-    String wordSelect() {
+    void wordSelect() {
         selectedWord = null;
 
         Scanner sc = new Scanner(getClass().getResourceAsStream("files/wordList.txt"));
@@ -30,7 +21,6 @@ class wordHandler {
         String[] wordList = lines.toArray(new String[0]);
         selectedWord = wordList[new Random().nextInt(wordList.length)];
         System.out.println(selectedWord);
-        return selectedWord;
     }
 
     void wordCensor(JLabel label) {
@@ -48,7 +38,7 @@ class wordHandler {
     }
 
     boolean wordCompare(char a) {
-        b = false;
+        boolean b = false;
         String l = String.valueOf(a);
         for (int i = 0; i < selectedWord.length(); i++) {
             String s = selectedWord.substring(i, i + 1);
