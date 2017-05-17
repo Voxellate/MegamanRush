@@ -16,7 +16,7 @@ class gameController {
     private wordHandler wordHandler;
     private soundManager soundManager;
     private boolean ready = true;
-    private JLabel gameOverLabel;
+    private JLabel notifyLabel;
     private ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
     private void charsMouseClicked(int x){
@@ -85,7 +85,7 @@ class gameController {
             }
         });
 
-        gameOverLabel = labels[0][4];
+        notifyLabel = labels[0][4];
 
         chars = labels[1];
         for (int x = 0; x < chars.length; x++) {
@@ -119,7 +119,7 @@ class gameController {
         frameUpdater.change(playerLabel, "player", "dead");
         guessLabel.setText(wordHandler.selectedWord);
         soundManager.playSound("player", "dead", false);
-        gameOverLabel.setVisible(true);
+        notifyLabel.setVisible(true);
         ready = false;
         executor.shutdown();
     }

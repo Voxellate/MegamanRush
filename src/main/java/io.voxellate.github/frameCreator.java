@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 
 class frameCreator {
@@ -22,9 +23,8 @@ class frameCreator {
 
         void initComponents() {
             try {
-                mmFont = Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("fonts/megaman_2.ttf").getPath())).deriveFont(22f);
-                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("fonts/megaman_2.ttf").getPath())));
+                mmFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("fonts/megaman_2.ttf"));
+                mmFont = mmFont.deriveFont(22f);
             } catch (IOException | FontFormatException e) {
                 e.printStackTrace();
             }
