@@ -42,13 +42,13 @@ class frameCreator {
             //======== layerPane ========
             {
                 //---- notifyLabel ----
-                notifyLabel.setText("<html>TRY TO GUESS THE WORD!<br>USE BUTTONS OR KEYBOARD</html>");
                 notifyLabel.setFont(mmFont);
+                notifyLabel.setText("USE BUTTONS OR KEYBOARD TO GUESS THE WORD!");
                 notifyLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 notifyLabel.setForeground(new Color(204, 204, 204));
                 notifyLabel.setVisible(true);
                 layerPane.add(notifyLabel, JLayeredPane.DEFAULT_LAYER);
-                notifyLabel.setBounds(320, 170, 600, 45);
+                notifyLabel.setBounds(125, 170, 1000, 45);
 
                 //---- restartLabel ----
                 restartLabel.setText("CLICK TO RESTART");

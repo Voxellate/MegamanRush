@@ -98,7 +98,6 @@ class gameController {
                 score = score + 100;
                 gameWindow.scoreLabel.setText(String.valueOf(score));
                 soundManager.playSound("game", "correct", false);
-                spriteManager.change(gameWindow.enemyLabel, "enemy", "dead");
                 health = health + 5;
                 if (health > 10) {health = 10;}
                 spriteManager.change(gameWindow.healthLabel, "health", Integer.toString(health));
@@ -127,7 +126,7 @@ class gameController {
         spriteManager.change(gameWindow.playerLabel, "player", "dead");
         gameWindow.guessLabel.setText(wordManager.selectedWord);
         soundManager.playSound("player", "dead", false);
-        gameWindow.notifyLabel.setText("<html>GAME OVER,&ensp;" + playerName + "!<br>YOUR SCORE WAS&ensp;" + score + "</html>");
+        gameWindow.notifyLabel.setText("GAME OVER, " + playerName + "! YOUR SCORE WAS" + score);
         gameWindow.notifyLabel.setVisible(true);
         gameWindow.restartLabel.setVisible(true);
         ready = false;
