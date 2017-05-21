@@ -9,7 +9,7 @@ class wordManager {
     private static StringBuilder censoredWord = new StringBuilder();
     private static JLabel wordLabel;
 
-    void wordSelect() {
+    wordManager (JLabel label) {
         selectedWord = null;
 
         Scanner sc = new Scanner(getClass().getResourceAsStream("files/wordList.txt"));
@@ -17,13 +17,10 @@ class wordManager {
         while (sc.hasNextLine()) {
             lines.add(sc.nextLine());
         }
-
         String[] wordList = lines.toArray(new String[0]);
         selectedWord = wordList[new Random().nextInt(wordList.length)];
         System.out.println(selectedWord);
-    }
 
-    void wordCensor(JLabel label) {
         censoredWord = new StringBuilder();
         wordLabel = label;
         for (int i = 0; i < selectedWord.length(); i++) {
